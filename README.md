@@ -1,4 +1,4 @@
-# chesstoolbylevon
+# 
 Chess Tool by Levon 
 
 Product Design and Management: Levon Berberyan <BR/>
