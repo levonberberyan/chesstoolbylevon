@@ -1,9 +1,9 @@
 package levonberberyan.chesstoolbylevon.chessgamelog;
 
 import levonberberyan.chesstoolbylevon.chessboard.ChessBoardAsCharArray;
-import levonberberyan.chesstoolbylevon.chessgame.ChessGameState;
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameState;
 import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
-import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicForm;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicHandler;
 
 
 /**
@@ -323,7 +323,7 @@ public final class FenParser {
 						theChessGameState.getBoard().getAbstractChessPieceatAtXY(y, x).equals(ChessPieceAbstractEnum.BLACK_KING)){
 					//System.out.println("Figure on (y,x)=" + y + "," + x + " is: " + theChessGame.getBoard().getFigureOnXY(y, x));
 					if(emptyCellsNumber > 0){fen += emptyCellsNumber; emptyCellsNumber = 0;}
-					fen += ChessPieceSymbolicForm.convertAbstractChessmanToSymbolic(theChessGameState.getBoard().getAbstractChessPieceatAtXY(y, x));
+					fen += ChessPieceSymbolicHandler.convertAbstractChessPieceToSymbolic(theChessGameState.getBoard().getAbstractChessPieceatAtXY(y, x));
 					}
 				} else{
 					emptyCellsNumber++;

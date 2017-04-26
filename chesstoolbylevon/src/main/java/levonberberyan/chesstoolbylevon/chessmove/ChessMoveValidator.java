@@ -1,6 +1,6 @@
 package levonberberyan.chesstoolbylevon.chessmove;
 
-import levonberberyan.chesstoolbylevon.chessgame.ChessGameState;
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameState;
 
 public class ChessMoveValidator {
 	/*

@@ -1,7 +1,7 @@
 package levonberberyan.chesstoolbylevon.chessmove;
 
-import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
-import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicForm;
+import levonberberyan.chesstoolbylevon.chessboard.ChessBoardI;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicHandler;
 
 public final class ChessMoveHandler implements ChessMoveHandlerInterface{
 	/*
@@ -28,39 +28,26 @@ public final class ChessMoveHandler implements ChessMoveHandlerInterface{
 		return move;
 	}
 	/*
-	 * Register Symbolic Chess Move On board
+	 * 
 	 */
-	public void registerSymbolicMove(String theSymbolicMove){
-		// format: a8g7
+	public static ChessMove convertUCIMoveStringToChessMove(String theMoveInUciFormat, ChessBoardI theChessBoard){
+		// *if stockfish, if ribka, if others
+		// we just check for stockfish now
 		
-		// convert symbolic move(like a7h8) to boardarr move(like [0][6]->[7][7])
-		int startX = ChessPieceSymbolicForm.getXFromChessmanSymbolic(theSymbolicMove.charAt(0));
-		int startY = 8 - Character.getNumericValue(theSymbolicMove.charAt(1));
-		int destinationX = ChessPieceSymbolicForm.getYFromChessmanSymbolic(theSymbolicMove.charAt(2));
-		int destinationY = 8 - Character.getNumericValue(theSymbolicMove.charAt(3));
+		ChessMove aChessMove = new ChessMove(theChessBoard);
 		
-		// get chess pieces on start and destination
-		ChessPieceAbstractEnum startPiece = getAbstractChessPieceatAtXY(startY, startX);
-		String destinationPiece = this.getFigureOnXY(destinationY, destinationX);
+		//*
 		
-		// register simple move
-		this.setChessPieceOnXY(destinationY, destinationX, startPiece);
-		this.setChessPieceOnXY(startY, startX, null);
+		// Set chess move Coordinates
+		aChessMove.setMoveCoordinates(ChessPieceSymbolicHandler.getXFromChessPieceSymbolic(theMoveInUciFormat.charAt(0)), 
+				ChessPieceSymbolicHandler.getYFromChessPieceSymbolic(theMoveInUciFormat.charAt(1)), 
+				ChessPieceSymbolicHandler.getXFromChessPieceSymbolic(theMoveInUciFormat.charAt(2)), 
+				ChessPieceSymbolicHandler.getYFromChessPieceSymbolic(theMoveInUciFormat.charAt(3))); 
 		
-		//this.show();
-		//this.showInfo();
-	}
-	/*
-	 * Convert symbolic chess move (example:a2a3) to chess move type
-	 */
-	public static ChessMove convertSymbolicMoveToChessMove(String theSymbolicMove){
-		int aSourceX = ChessPieceSymbolicForm.getXFromChessmanSymbolic(theSymbolicMove.charAt(0));
-		int aSourceY = ChessPieceSymbolicForm.getYFromChessmanSymbolic(theSymbolicMove.charAt(1));
-		int aDestinationX = ChessPieceSymbolicForm.getXFromChessmanSymbolic(theSymbolicMove.charAt(2));
-		int aDestinationY = ChessPieceSymbolicForm.getYFromChessmanSymbolic(theSymbolicMove.charAt(3));
-		return new ChessMove(aSourceX, aSourceY, aDestinationX, aDestinationY, null);
+		// Check move type
+		// 3 move types
+		
+		return aChessMove;
 	}
 }
-
-
 

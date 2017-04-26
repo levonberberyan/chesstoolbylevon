@@ -1,4 +1,4 @@
-package levonberberyan.chesstoolbylevon.chessgame;
+package levonberberyan.chesstoolbylevon.chessgamestate;
 
 import levonberberyan.chesstoolbylevon.chessboard.ChessBoardI;
 

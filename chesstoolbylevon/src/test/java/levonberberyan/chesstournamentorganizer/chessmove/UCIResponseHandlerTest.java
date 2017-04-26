@@ -6,8 +6,8 @@ import levonberberyan.chesstoolbylevon.chessboard.ChessBoardAsCharArray;
 import levonberberyan.chesstoolbylevon.chessboard.ChessBoardI;
 import levonberberyan.chesstoolbylevon.chessenginecommunication.UCIResponseFromChessEngineHandler;
 import levonberberyan.chesstoolbylevon.chessenginecommunication.UCIValidMoveException;
-import levonberberyan.chesstoolbylevon.chessgame.ChessGameStateI;
 import levonberberyan.chesstoolbylevon.chessgamelog.FenParser;
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameStateI;
 import levonberberyan.chesstoolbylevon.chessmove.ChessMoveHandler;
 
 import org.junit.Ignore;

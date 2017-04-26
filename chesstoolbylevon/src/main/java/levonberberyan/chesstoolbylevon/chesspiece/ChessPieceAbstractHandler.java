@@ -1,10 +1,10 @@
 package levonberberyan.chesstoolbylevon.chesspiece;
 
-public class ChessPieceAbstractForm {
+public class ChessPieceAbstractHandler {
 	/*
 	 * Convert Symbolic Chess Piece to Chess Piece Type
 	 */
-	public static ChessPieceAbstractEnum convertSymbolicChessmanToAbstract(char theChessmanSymbolic){
+	public static ChessPieceAbstractEnum convertSymbolicChessPieceToAbstract(char theChessmanSymbolic){
 		if(theChessmanSymbolic == 'K'){return ChessPieceAbstractEnum.WHITE_KING;}
 		if(theChessmanSymbolic == 'k'){return ChessPieceAbstractEnum.BLACK_KING;}
 		if(theChessmanSymbolic == 'Q'){return ChessPieceAbstractEnum.WHITE_QUEEN;}

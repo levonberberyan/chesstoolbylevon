@@ -1,12 +1,12 @@
 package levonberberyan.chesstoolbylevon.chesspiece;
 
-public class ChessPieceSymbolicForm {
+public class ChessPieceSymbolicHandler {
 	//*
 	/**
 	 * get X coordinate by piece symbol
 	 * example: X=0 for 'a'
 	 */
-	public static int getXFromChessmanSymbolic(char letter){
+	public static int getXFromChessPieceSymbolic(char letter){
 		int xPos = 0;
 		switch(letter){
 			case 'a':{
@@ -48,13 +48,13 @@ public class ChessPieceSymbolicForm {
 	 * get Y coordinate by piece order
 	 * example: Y=7 for '1'
 	 */
-	public static int getYFromChessmanSymbolic(char theOrderLetter){
+	public static int getYFromChessPieceSymbolic(char theOrderLetter){
 		return 8 - Character.getNumericValue(theOrderLetter);
 	}
 	/*
 	 * Convert Abstract Chessman Type to Symbolic Chessman
 	 */
-	public static char convertAbstractChessmanToSymbolic(ChessPieceAbstractEnum theChessman){
+	public static char convertAbstractChessPieceToSymbolic(ChessPieceAbstractEnum theChessman){
 		if(theChessman != null){
 			if(theChessman.equals(ChessPieceAbstractEnum.WHITE_KING)){return 'K';}
 			else if(theChessman.equals(ChessPieceAbstractEnum.BLACK_KING)){return 'k';}

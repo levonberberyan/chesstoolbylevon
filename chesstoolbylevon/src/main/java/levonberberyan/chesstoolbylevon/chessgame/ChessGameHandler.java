@@ -45,7 +45,7 @@ public class ChessGameHandler {
 			// 3. Extract and check move from calculations
 			String aChessMoveString = UCIChessEngineCommunicationHandler.extractMoveFromCalculations(aMoveCalculations);
 			// 4. Convert chess move String to ChessMove
-			ChessMove aChessMove = ChessMoveHandler.convertSymbolicMoveToChessMove(aChessMoveString);
+			ChessMove aChessMove = ChessMoveHandler.convertUCIMoveStringToChessMove(aChessMoveString, theChessBoard);
 			// 5. Try to register chess move on board
 			theChessGame.getChessGameCurrentState().registerGameMove(aChessMove);
 			// 6. show board after move

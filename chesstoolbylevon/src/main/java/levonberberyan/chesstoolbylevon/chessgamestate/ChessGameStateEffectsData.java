@@ -1,8 +1,8 @@
-package levonberberyan.chesstoolbylevon.chessgame;
+package levonberberyan.chesstoolbylevon.chessgamestate;
 
+import levonberberyan.chesstoolbylevon.chessmove.ChessMoveTypeEnum;
 import levonberberyan.chesstoolbylevon.chessmove.ChessMove;
 import levonberberyan.chesstoolbylevon.chessmove.ChessMoveTypeChecker;
-import levonberberyan.chesstoolbylevon.chessmove.ChessMoveTypeEnum;
 
 public class ChessGameStateEffectsData{
 	/*
@@ -39,14 +39,14 @@ public class ChessGameStateEffectsData{
 	/**
 	 * Register Game effects for move
 	 */
-	public void registerGameEffects(ChessMove theChessMove){		
+	public void registerGameEffects(ChessMove theChessMove, ChessGameState theChessGameState){		
 		// check type of the chess move
-		ChessMoveTypeEnum aMoveType = ChessMoveTypeChecker.checkMoveType(theChessMove);
+		ChessMoveTypeEnum aMoveType = ChessMoveTypeChecker.checkMoveType(theChessMove, theChessGameState.getBoard());
 		
 		// register effects according to chess move type
 		switch(aMoveType){
 			case MOVEMENT: break;
-			case ATTACK: break;
+			case SIMPLE_ATTACK: break;
 			case PROMOTION: registerPromotionEffect();
 			case EN_PASSANT_ATTACK: registerEnPassantEffect();
 			case CHECK_EFFECT: registerCheckEffect();

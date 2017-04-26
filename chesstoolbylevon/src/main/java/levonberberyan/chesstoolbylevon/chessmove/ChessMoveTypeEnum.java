@@ -2,7 +2,7 @@ package levonberberyan.chesstoolbylevon.chessmove;
 
 public enum ChessMoveTypeEnum {
 	MOVEMENT,
-	ATTACK,
+	SIMPLE_ATTACK,
 	PROMOTION,
 	EN_PASSANT_ATTACK,
 	CHECK_EFFECT,

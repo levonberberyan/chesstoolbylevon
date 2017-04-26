@@ -5,8 +5,8 @@ import java.io.IOException;
 import levonberberyan.chesstoolbylevon.chessengine.ChessEngineAsProcess;
 import levonberberyan.chesstoolbylevon.chessenginecommunication.UCIChessEngineCommunicationHandler;
 import levonberberyan.chesstoolbylevon.chessenginecommunication.UCIResponseFromChessEngineHandler;
-import levonberberyan.chesstoolbylevon.chessgame.ChessGameStateI;
 import levonberberyan.chesstoolbylevon.chessgamelog.FenParser;
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameStateI;
 import levonberberyan.chesstoolbylevon.chessmove.ChessMoveHandler;
 
 import org.junit.Ignore;

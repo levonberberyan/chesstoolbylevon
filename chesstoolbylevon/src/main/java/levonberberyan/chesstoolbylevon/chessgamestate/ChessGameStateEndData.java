@@ -1,5 +1,6 @@
-package levonberberyan.chesstoolbylevon.chessgame;
+package levonberberyan.chesstoolbylevon.chessgamestate;
 
+import levonberberyan.chesstoolbylevon.chessgame.GameStatesEnum;
 import levonberberyan.chesstoolbylevon.chessgamevalidation.ChessGameEndChecker;
 import levonberberyan.chesstoolbylevon.chessmove.ChessMove;
 

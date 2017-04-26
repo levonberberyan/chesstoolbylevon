@@ -2,6 +2,8 @@ package levonberberyan.chesstoolbylevon.chessgame;
 
 import java.util.List;
 
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameState;
+
 public class ChessGame {
 	/*
 	 * Default Constructor

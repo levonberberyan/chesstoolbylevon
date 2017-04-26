@@ -1,4 +1,4 @@
-package levonberberyan.chesstoolbylevon.chessgame;
+package levonberberyan.chesstoolbylevon.chessgamestate;
 
 import java.io.IOException;
 
@@ -13,14 +13,14 @@ public final class ChessGameState{
 		// *validate theChessMove for Game
 		// if not normal return false
 		
-		// register move on game board
-		getBoard().registerMove(theChessMove);
-		
 		// register move effects for game
-		getChessGameStateEffectsData().registerGameEffects(theChessMove);
-		
+		getChessGameStateEffectsData().registerGameEffects(theChessMove, this);
+				
 		// check end of game effects
 		getChessGameStateEndData().registerEndOfGameEffects(theChessMove, this);
+		
+		// register move on game board
+		theChessMove.registerMoveOnBoard(getBoard());
 		
 		// registered successful
 		return true;

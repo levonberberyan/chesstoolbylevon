@@ -1,6 +1,9 @@
 package levonberberyan.chesstoolbylevon.chessmove;
 
+import levonberberyan.chesstoolbylevon.chessboard.ChessBoardI;
 import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractHandler;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicHandler;
 
 /**
  * @author Levon
@@ -9,12 +12,59 @@ import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
  */
 
 public class ChessMove implements ChessMoveI{
-	/**
-	 * Constructor
+	/*
+	 * Register Chess Move On Board
 	 */
-	public ChessMove(int theMoveSourceX, int theMoveSourceY, int theMoveDestinationX, int theMoveDestinationY, ChessPieceAbstractEnum theMoveChessPiece){
+	public void registerMoveOnBoard(ChessBoardI theBoard){
+		//coordinates
+		int startX = this.getMoveSourceX();
+		int startY = this.getMoveSourceY();
+		int destinationX = this.getMoveDestinationX();
+		int destinationY = this.getMoveDestinationY();
+		
+		//chess piece
+		char aChessPieceChar = ChessPieceSymbolicHandler.convertAbstractChessPieceToSymbolic(this.getMoveChessPiece());
+		
+		// *do actions according to move type
+		switch(this.getMoveType()){
+			case MOVEMENT:{
+				theBoard.setChessPieceOnXYFromAbstractPiece(destinationY, destinationX, ChessPieceAbstractHandler.convertSymbolicChessPieceToAbstract(aChessPieceChar));
+				theBoard.setChessPieceOnXYFromAbstractPiece(startY, startX, ChessPieceAbstractHandler.convertSymbolicChessPieceToAbstract('o'));
+				break;
+			}
+			case SIMPLE_ATTACK:
+				break;
+			case EN_PASSANT_ATTACK:
+				break;
+			case PROMOTION:
+				break;
+			case CASTLING_BLACKS_KING_SIDE:
+				break;
+			case CASTLING_BLACKS_QUEEN_SIDE:
+				break;
+			case CASTLING_WHITES_KING_SIDE:
+				break;
+			case CASTLING_WHITES_QUEEN_SIDE:
+				break;
+			case CHECK_EFFECT:
+				break;
+			default:
+				break;	
+		}
+	}
+	/**
+	 * Constructors
+	 */
+	public ChessMove(int theMoveSourceX, int theMoveSourceY, int theMoveDestinationX, int theMoveDestinationY, ChessPieceAbstractEnum theMoveChessPiece, ChessBoardI theBoardState){
 		setMoveCoordinates(theMoveSourceX, theMoveSourceY, theMoveDestinationX, theMoveDestinationY);
 		setMoveChessPiece(theMoveChessPiece);
+		
+		// *check the move type
+		setMoveType(ChessMoveTypeChecker.checkMoveType(this, theBoardState));
+	}
+	public ChessMove(ChessBoardI theBoardState){
+		// *check the move type
+		setMoveType(ChessMoveTypeChecker.checkMoveType(this, theBoardState));
 	}
 	/**
 	 * Move type Getter, Setter
@@ -47,9 +97,16 @@ public class ChessMove implements ChessMoveI{
 	public void setMoveChessPiece(ChessPieceAbstractEnum theMoveChessPiece){this.moveChessPiece = theMoveChessPiece;}
 	public ChessPieceAbstractEnum getMoveChessPiece(){return this.moveChessPiece;}
 	/**
+	 * Promotion Type Getter, Setter
+	 */
+	public PromotionTypeEnum getPromotionType(){return this.promotionType;}
+	public void setPromotionType(PromotionTypeEnum thePromtionType){this.promotionType = thePromtionType;}
+	/**
 	 * Private fields
 	 */
 	private ChessMoveTypeEnum moveType;
+	private PromotionTypeEnum promotionType = PromotionTypeEnum.NONE;
+	private String enPassantSymbolicTarget = "-";
 	private ChessPieceAbstractEnum moveChessPiece;
 	private int moveSourceX;
 	private int moveSourceY;

@@ -2,52 +2,11 @@ package levonberberyan.chesstoolbylevon.chessboard;
 
 import java.util.Arrays;
 
-import levonberberyan.chesstoolbylevon.chessmove.ChessMove;
 import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
-import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractForm;
-import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicForm;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractHandler;
+import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceSymbolicHandler;
 
 public final class ChessBoardAsCharArray implements ChessBoardI{
-	/*
-	 * Register Chess Move On Board
-	 */
-	public void registerMove(ChessMove theMove){
-		//coordinates
-		int startX = theMove.getMoveSourceX();
-		int startY = theMove.getMoveSourceY();
-		int destinationX = theMove.getMoveDestinationX();
-		int destinationY = theMove.getMoveDestinationY();
-		
-		//chess piece
-		char aChessPieceChar = ChessPieceSymbolicForm.convertAbstractChessmanToSymbolic(theMove.getMoveChessPiece());
-		
-		// *check move type and do actions according to it
-		switch(theMove.getMoveType()){
-			case MOVEMENT:{
-				setCharAt(destinationY, destinationX, aChessPieceChar);
-				setCharAt(startY, startX, 'o');
-				break;
-			}
-			case ATTACK:
-				break;
-			case EN_PASSANT_ATTACK:
-				break;
-			case PROMOTION:
-				break;
-			case CASTLING_BLACKS_KING_SIDE:
-				break;
-			case CASTLING_BLACKS_QUEEN_SIDE:
-				break;
-			case CASTLING_WHITES_KING_SIDE:
-				break;
-			case CASTLING_WHITES_QUEEN_SIDE:
-				break;
-			case CHECK_EFFECT:
-				break;
-			default:
-				break;	
-		}
-	}
 	/**
 	 * Show Current Board State
 	 */
@@ -96,14 +55,14 @@ public final class ChessBoardAsCharArray implements ChessBoardI{
 	 * Set chess piece at x,y from Abstract Piece
 	 */
 	public void setChessPieceOnXYFromAbstractPiece(int theY, int theX, ChessPieceAbstractEnum theChessPiece){
-		setCharAt(theY, theX, ChessPieceSymbolicForm.convertAbstractChessmanToSymbolic(theChessPiece));
+		setCharAt(theY, theX, ChessPieceSymbolicHandler.convertAbstractChessPieceToSymbolic(theChessPiece));
 	}
 	/**
 	 * Get Abstract chess piece at y, x
 	 * (y,x) instead of (x,y) because of simple array structure
 	 */
 	public ChessPieceAbstractEnum getAbstractChessPieceatAtXY(int theY, int theX){
-		return ChessPieceAbstractForm.convertSymbolicChessmanToAbstract(getCharAt(theY, theX));
+		return ChessPieceAbstractHandler.convertSymbolicChessPieceToAbstract(getCharAt(theY, theX));
 	}
 	/**
 	 * Set Board from Abstract Pieces Matrix
@@ -111,7 +70,7 @@ public final class ChessBoardAsCharArray implements ChessBoardI{
 	public void setBoardFromAbstractPiecesMatrix(ChessPieceAbstractEnum[][] theBoardAbstractEnumMatrix){
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 8; j++){
-				setCharAt(i, j, ChessPieceSymbolicForm.convertAbstractChessmanToSymbolic(theBoardAbstractEnumMatrix[i][j]));
+				setCharAt(i, j, ChessPieceSymbolicHandler.convertAbstractChessPieceToSymbolic(theBoardAbstractEnumMatrix[i][j]));
 			}
 	}
 	/**

@@ -32,6 +32,11 @@ public final class UCIChessEngineCommunicationHandler implements ChessGameCommun
 	 * Request move calculation from UCI engine
 	 */
 	public static String getMoveCalculations(ChessEngineI theChessEngine){
+		// calculations are dependant on engine
+		// stockfish: bestmove (none)
+		// fruit and rybka: bestmove a1a1
+		// Robolitto: bestmove NULL
+		
 		theChessEngine.writeLineToEngine("go movetime 1000\n");
 		try{
 			Thread.sleep(2000);
@@ -63,15 +68,19 @@ public final class UCIChessEngineCommunicationHandler implements ChessGameCommun
 	public static String extractMoveFromCalculations(String theMoveCalculations){
 		// *validate move calculations String
 		System.out.println("\n" + "Move Calculations String: \n" + theMoveCalculations);
-		//extract move from "bestmove * ponder *" String
-		//or just "bestmove *" String
+		
+		// If engine found the move, than it's in following format: "bestmove * [ponder *]"
 		String aMoveString = "";
+		
+		//if all type types of move can be divided in 2 (with ponder and without)
 		if(theMoveCalculations.contains("ponder")){
 			aMoveString = theMoveCalculations.substring(theMoveCalculations.indexOf(" ") + 1, theMoveCalculations.indexOf(" ponder"));
 		}
 		else{
+			// get all move info after bestmove
 			aMoveString = theMoveCalculations.substring(theMoveCalculations.indexOf("bestmove ") + 9);
 		}
+		
 		System.out.println("The Move string: " + aMoveString);
 		return aMoveString;
 	}

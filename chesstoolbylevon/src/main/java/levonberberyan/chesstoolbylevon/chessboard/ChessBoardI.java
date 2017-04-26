@@ -1,6 +1,5 @@
 package levonberberyan.chesstoolbylevon.chessboard;
 
-import levonberberyan.chesstoolbylevon.chessmove.ChessMove;
 import levonberberyan.chesstoolbylevon.chesspiece.ChessPieceAbstractEnum;
 
 /**
@@ -17,6 +16,4 @@ public interface ChessBoardI {
 	void setChessPieceOnXYFromAbstractPiece(int theY, int theX, ChessPieceAbstractEnum theChessman);
 	
 	void showCurrentBoardState();
-	
-	void registerMove(ChessMove theMove);
 }

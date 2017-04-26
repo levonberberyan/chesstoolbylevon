@@ -1,7 +1,7 @@
 package levonberberyan.chesstournamentorganizer.chessgamelog;
 
-import levonberberyan.chesstoolbylevon.chessgame.ChessGameStateI;
 import levonberberyan.chesstoolbylevon.chessgamelog.FenParser;
+import levonberberyan.chesstoolbylevon.chessgamestate.ChessGameStateI;
 
 import org.junit.Before;
 import org.junit.Ignore;
